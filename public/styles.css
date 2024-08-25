@@ -1,0 +1,29 @@
+.centered-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1050;
+    /* Make sure it's on top of other elements */
+    width: 300px;
+    padding: 15px;
+    background-color: rgba(167, 167, 167, 0.515);
+    border: 1px solid #dc3545;
+    /* Optional: give it a border similar to the alert color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+
+/* Make the first column sticky */
+.sticky-col {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  left: 0;
+  background-color: #f8f9fa; /* Background color to avoid overlap issues */
+  z-index: 1; /* Ensure it stays on top of other content */
+}
+
+/* Adjust the header background color for better visibility */
+thead th {
+  background-color: #e9ecef;
+}

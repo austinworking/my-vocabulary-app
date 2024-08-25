@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocabulary</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <link   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"   rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+  <div>
+    <nav class="navbar" style="background-color: #e3f2fd;">
+      <div class="container-md">
+        <a class="navbar-brand">Welcome to The Vocabulary Database</a>
+      </div>
+    </nav>
+  </div>
+  <div class="container">
+    <br>
+    <h4 style="text-align: center;">English Vocabulary Database</h4>
+    <br>
+
+    <form method="post" action="" name="contact-form" id="vocabulary-form">
+      <div>
+        <label for="englishWord" class="form-label">English</label>
+        <input type="text" id="englishWord" name="English" class="form-control" placeholder="Input English Word">
+        <select title="Choose Correct Word Class!" name="WordClass" id="wordClass" class="form-select form-select-sm">
+          <option value="Noun">Noun</option>
+          <option value="Adjective">Adjective</option>
+          <option value="Verb">Verb</option>
+        </select>
+        <input type="text" id="verb2" name="Verb2" class="form-control visually-hidden" placeholder="Input Verb 2">
+        <input type="text" id="verb3" name="Verb3" class="form-control visually-hidden" placeholder="Input Verb 3">
+        <br>
+        <label for="indonesianWord" class="form-label">Indonesia</label>
+        <input type="text" id="indonesianWord" name="Indonesian" class="form-control"
+          placeholder="Input Indonesian Word">
+        <br>
+        <input class="btn btn-primary" type="submit" value="Enter" id="enter">
+        <br>
+      </div>
+    </form>
+    <br>
+    <div class="row position-relative">
+      <div class="input-group mb-3">
+        <input type="text" id="search-bar" placeholder="Search..." onkeyup="searchTable()"
+          class="form-control form-control-sm">
+          <span class="input-group-text bg-primary-subtle text-white">🔍</span>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover" id="vocabTable">
+        <thead>
+          <tr>
+            <th scope="col" onclick="sortTable(0)" class="sticky-col">English Word</th>
+            <th scope="col" onclick="sortTable(1)">Indonesian Meaning</th>
+            <th scope="col" onclick="sortTable(3)">Word Class</th>
+            <th scope="col">Verb 2</th>
+            <th scope="col">Verb 3</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody id="tests-table">
+
+        </tbody>
+      </table>
+    </div>
+    <div id="liveAlertPlaceholder"></div>
+    <!-- Pagination -->
+    <div id="pagination">
+      <button class="btn btn-outline-primary" onclick="prevPage()">Previous</button>
+      <span id="pageInfo"></span>
+      <button class="btn btn-outline-primary" onclick="nextPage()">Next</button>
+    </div>
+
+    <!-- Modal for form validation -->
+    <div class="modal fade" id="validationModal" tabindex="-1" aria-labelledby="validationModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="validationModalLabel">Validation Error</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Please fill in all required fields.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for delete confirmation -->
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this word?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+</body>
+<script src="vocabulary.js"></script>
+
+</html>
